@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ApexPlanet Software Pvt. Ltd | Build The Future With Us</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Animated Gradient Background -->
+    <div class="bg-animated">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+      <div class="blob blob-4"></div>
+    </div>
+    <div class="interactive-glow" id="mouse-glow"></div>
+    <div class="app-container">
+      <!-- Success Screen -->
+      <div id="success-screen" class="success-screen hidden">
+        <div class="success-content">
+          
+          <div class="success-icon-wrapper">
+            <div class="success-icon-bg"></div>
+            <i class="fas fa-check success-check"></i>
+          </div>
+          <h2>Welcome Aboard!</h2>
+          <p>
+            Your application has been successfully submitted. We'll review your
+            profile and get back to you soon.
+          </p>
+          <button id="reset-btn" class="btn btn-primary mt-4">
+            Return to Careers
+          </button>
+        </div>
+      </div>
+
+      <div class="form-wrapper" id="form-wrapper">
+        <!-- Progress Bar -->
+        <div class="progress-container">
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-bar"></div>
+          </div>
+          <div class="step-indicators">
+            <div class="step active" data-step="1">
+              <div class="step-icon">1</div>
+              <span class="step-label">Personal</span>
+            </div>
+            <div class="step" data-step="2">
+              <div class="step-icon">2</div>
+              <span class="step-label">Professional</span>
+            </div>
+            <div class="step" data-step="3">
+              <div class="step-icon">3</div>
+              <span class="step-label">Final</span>
+            </div>
+          </div>
+        </div>
+
+        <form id="recruitment-form" novalidate>
+          <!-- STEP 1: Personal Details -->
+          <div class="form-step active" id="step-1">
+            <div class="step-header">
+              <h3>Personal Details</h3>
+              <p>Let's start with your basic information.</p>
+            </div>
+
+            <div class="form-group floating-group">
+              <div class="input-wrapper">
+                <i class="fas fa-user input-icon"></i>
+                <input
+                  type="text"
+                  id="fullName"
+                  class="floating-input"
+                  placeholder=" "
+                  required
+                />
+                <label for="fullName" class="floating-label">Full Name</label>
+                <i class="fas fa-check-circle valid-icon"></i>
+                <i class="fas fa-exclamation-circle invalid-icon"></i>
+              </div>
+              <span class="error-text"
+                >Please enter your first and last name.</span
+              >
+            </div>
+
+            <div class="form-group floating-group">
+              <div class="input-wrapper">
+                <i class="fas fa-envelope input-icon"></i>
+                <input
+                  type="email"
+                  id="email"
+                  class="floating-input"
+                  placeholder=" "
+                  required
+                />
+                <label for="email" class="floating-label">Email Address</label>
+                <i class="fas fa-check-circle valid-icon"></i>
+                <i class="fas fa-exclamation-circle invalid-icon"></i>
+              </div>
+              <span class="error-text">Enter a valid email format.</span>
+            </div>
+
+            <div class="form-group floating-group">
+              <div class="input-wrapper">
+                <i class="fas fa-phone input-icon"></i>
+                <input
+                  type="tel"
+                  id="phone"
+                  class="floating-input"
+                  placeholder=" "
+                  required
+                />
+                <label for="phone" class="floating-label">Phone Number</label>
+                <i class="fas fa-check-circle valid-icon"></i>
+                <i class="fas fa-exclamation-circle invalid-icon"></i>
+              </div>
+              <span class="error-text"
+                >Enter a valid 10-digit phone number.</span
+              >
+            </div>
+
+            <div class="step-actions">
+              <button
+                type="button"
+                class="btn btn-primary next-btn disabled"
+                disabled
+              >
+                Continue <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Professional Info -->
+          <div class="form-step" id="step-2">
+            <div class="step-header">
+              <h3>Professional Info</h3>
+              <p>Tell us about your skills and experience.</p>
+            </div>
+
+            <div class="form-group floating-group select-group">
+              <div class="input-wrapper">
+                <i class="fas fa-briefcase input-icon"></i>
+                <select id="role" class="floating-input" required>
+                  <option value="" disabled selected hidden></option>
+                  <option value="frontend">Frontend Developer</option>
+                  <option value="backend">Backend Developer</option>
+                  <option value="designer">UI/UX Designer</option>
+                  <option value="manager">Product Manager</option>
+                </select>
+                <label for="role" class="floating-label"
+                  >Role Applied For</label
+                >
+                <i class="fas fa-chevron-down arrow-icon"></i>
+              </div>
+              <span class="error-text">Please select a role.</span>
+            </div>
+
+            <div class="form-group floating-group">
+              <div class="input-wrapper">
+                <i class="fas fa-chart-line input-icon"></i>
+                <input
+                  type="number"
+                  id="experience"
+                  class="floating-input"
+                  placeholder=" "
+                  min="0"
+                  max="50"
+                  required
+                />
+                <label for="experience" class="floating-label"
+                  >Years of Experience</label
+                >
+                <i class="fas fa-check-circle valid-icon"></i>
+                <i class="fas fa-exclamation-circle invalid-icon"></i>
+              </div>
+              <span class="error-text">Enter a number between 0 and 50.</span>
+            </div>
+
+            <div class="form-group floating-group">
+              <div class="input-wrapper">
+                <i class="fas fa-link input-icon"></i>
+                <input
+                  type="url"
+                  id="portfolio"
+                  class="floating-input"
+                  placeholder=" "
+                  required
+                />
+                <label for="portfolio" class="floating-label"
+                  >Portfolio / LinkedIn URL</label
+                >
+                <i class="fas fa-check-circle valid-icon"></i>
+                <i class="fas fa-exclamation-circle invalid-icon"></i>
+              </div>
+              <span class="error-text"
+                >Enter a valid URL (include https://).</span
+              >
+            </div>
+
+            <div class="step-actions split">
+              <button type="button" class="btn btn-secondary prev-btn">
+                <i class="fas fa-arrow-left"></i> Back
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary next-btn disabled"
+                disabled
+              >
+                Continue <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Final Details -->
+          <div class="form-step" id="step-3">
+            <div class="step-header">
+              <h3>Final Details</h3>
+              <p>Why are you the perfect fit for this role?</p>
+            </div>
+
+            <div class="form-group floating-group">
+              <div class="input-wrapper textarea-wrapper">
+                <textarea
+                  id="coverLetter"
+                  class="floating-input"
+                  rows="4"
+                  placeholder=" "
+                  required
+                ></textarea>
+                <label for="coverLetter" class="floating-label"
+                  >Why should we hire you?</label
+                >
+                <i class="fas fa-check-circle valid-icon" style="top: 20px"></i>
+                <i
+                  class="fas fa-exclamation-circle invalid-icon"
+                  style="top: 20px"
+                ></i>
+              </div>
+              <span class="error-text"
+                >Please write at least 20 characters.</span
+              >
+            </div>
+
+            <div class="step-actions split">
+              <button type="button" class="btn btn-secondary prev-btn">
+                <i class="fas fa-arrow-left"></i> Back
+              </button>
+              <button
+                type="submit"
+                id="submit-btn"
+                class="btn btn-primary submit-btn disabled"
+                disabled
+              >
+                <span class="btn-text">Submit Application</span>
+                <div class="loader hidden"></div>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

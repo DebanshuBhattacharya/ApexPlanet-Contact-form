@@ -577,103 +577,10 @@ recruitmentForm.addEventListener("submit", function (event) {
     // show success screen
     successScreen.classList.remove("hidden");
 
-    // shoot confetti!!
-    shootConfetti();
+    
   }, 2000);
 });
 
-// ==============================
-// CONFETTI!! (the fun part)
-// ==============================
-
-function shootConfetti() {
-  var container = document.getElementById("confetti-container");
-
-  // figure out the center of the screen
-  // this is where all confetti will start from
-  var centerX = window.innerWidth / 2;
-  var centerY = window.innerHeight / 2;
-
-  // make 120 confetti pieces
-  for (var i = 0; i < 120; i++) {
-    // create a div for each piece
-    var piece = document.createElement("div");
-    piece.classList.add("confetti");
-
-    // start all pieces from the center of the screen
-    piece.style.left = centerX + "px";
-    piece.style.top = centerY + "px";
-
-    // random colors
-    var colors = ["#a855f7", "#d946ef", "#06b6d4", "#10b981", "#f59e0b", "#ef4444", "#ffffff"];
-    var randomColor = colors[Math.floor(Math.random() * colors.length)];
-    piece.style.backgroundColor = randomColor;
-
-    // random size
-    var size = Math.random() * 10 + 5;
-    piece.style.width = size + "px";
-    piece.style.height = size + "px";
-
-    // random shape (some circles some squares)
-    if (Math.random() > 0.5) {
-      piece.style.borderRadius = "50%";
-    }
-
-    // we need each piece to fly out in a different direction from center
-    // pick a random angle in degrees (0 to 360)
-    var angle = Math.random() * 360;
-
-    // pick a random distance to fly outward
-    // some go far, some go not so far
-    var distance = Math.random() * 400 + 100;
-
-    // convert angle to x and y movement using math
-    // angle 0 = right, 90 = down, 180 = left, 270 = up
-    var angleInRadians = angle * (Math.PI / 180);
-    var moveX = Math.cos(angleInRadians) * distance;
-    var moveY = Math.sin(angleInRadians) * distance;
-
-    // use a keyframe animation with a unique name for each piece
-    // this lets us move it to the calculated spot AND make it fall down
-    var animName = "confetti-fly-" + i;
-
-    // add the keyframe to the page stylesheet
-    var styleSheet = document.styleSheets[0];
-    var keyframeRule = "@keyframes " + animName + " { "
-      + "0%   { transform: translate(0, 0) rotate(0deg);   opacity: 1; } "
-      + "60%  { opacity: 1; } "
-      + "100% { transform: translate(" + moveX + "px, " + moveY + "px) rotate(720deg); opacity: 0; } "
-      + "}";
-
-    // try adding the rule, some browsers are picky so wrap in try/catch
-    try {
-      styleSheet.insertRule(keyframeRule, styleSheet.cssRules.length);
-    } catch (e) {
-      // oh well, the piece just wont animate if this fails
-    }
-
-    // apply the animation
-    var flyTime = Math.random() * 1.5 + 0.8;
-    piece.style.animationName = animName;
-    piece.style.animationDuration = flyTime + "s";
-    piece.style.animationTimingFunction = "ease-out";
-    piece.style.animationFillMode = "forwards";
-
-    // small random delay so they dont all pop at exact same time
-    var delay = Math.random() * 0.3;
-    piece.style.animationDelay = delay + "s";
-
-    // make sure position is absolute so left/top works
-    piece.style.position = "fixed";
-
-    container.appendChild(piece);
-  }
-
-  // clean up confetti after 4 seconds
-  setTimeout(function () {
-    container.innerHTML = "";
-  }, 4000);
-}
 
 // ==============================
 // RESET BUTTON
